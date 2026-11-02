@@ -191,7 +191,7 @@ public class AccountLedgerApp {
             //*Navigating through the menu
             switch (command) {
                 case 1 -> allTransactions();
-                case 2 -> makePayment(sC);
+                case 2 -> onlyDeposits();
                 case 3 -> displayLedgerScreen(sC);
                 case 5 -> menuApp = false;
 
@@ -235,10 +235,54 @@ public class AccountLedgerApp {
                 System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n", date, time,type, vendor, description, amount);
 
             }
+            bankReader.close();
 
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
         }
+
+    }
+
+    public static void onlyDeposits(){
+
+        //?Try catch to catch any unexpected errors
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+            //?Loop to go over all the transaction
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null){
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+
+                //*If statement  to only print out equal statement
+                if (type.equals("Deposit")) {
+
+                    //*Display transaction info
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n", date, time, type, vendor, description, amount);
+
+                }
+            }
+            bankReader.close();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
+
 
     }
 
