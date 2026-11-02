@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class AccountLedgerApp {
@@ -53,4 +55,34 @@ public class AccountLedgerApp {
         return sC.nextInt();
     }
 
+    //!Creating a method for depositing
+    public static void  addDeposit(Scanner sC) {
+
+        //?Creating a try to catch any unexpected errors
+        try {
+
+            //*Creating buffer writer to write their deposit in the file
+            BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv"));
+
+            //*Asking for how much there deposit
+            System.out.print("How much would you like to deposit $");
+
+            //*Catching there answer
+            String deposit = sC.nextLine();
+
+            //*Asking for a description
+            System.out.println("Small description: ");
+
+            //*Catching the answer
+            String description = sC.nextLine();
+
+            //*Formatting there deposit into the file
+            String writtenLine = String.format("%s|%s|Deposit|%s|%s");
+
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
 }

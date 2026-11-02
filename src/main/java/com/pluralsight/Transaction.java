@@ -3,14 +3,12 @@ package com.pluralsight;
 public class Transaction {
     private String vendorInfo;
     private String description;
-    private int deposit;
-    private int payments;
+    private int amount;
 
-    public Transaction(String vendorInfo, String description, int deposit, int payments) {
+    public Transaction(String vendorInfo, String description, int amount) {
         this.vendorInfo = vendorInfo;
         this.description = description;
-        this.deposit = deposit;
-        this.payments = payments;
+        this.amount = amount;
     }
 
     public String getVendorInfo() {
@@ -29,19 +27,11 @@ public class Transaction {
         this.description = description;
     }
 
-    public int getDeposit() {
-        return deposit;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setDeposit(int deposit) {
-        this.deposit = deposit;
-    }
-
-    public int getPayments() {
-        return payments;
-    }
-
-    public void setPayments(int payments) {
-        this.payments = payments;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
