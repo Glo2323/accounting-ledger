@@ -193,6 +193,7 @@ public class AccountLedgerApp {
                 case 1 -> allTransactions();
                 case 2 -> onlyDeposits();
                 case 3 -> onlyPayments();
+                case 4 -> displayReportsMenu(sC);
                 case 5 -> menuApp = false;
 
 
@@ -330,6 +331,48 @@ public class AccountLedgerApp {
 
 
     }
+
+    //!Creating a method to display the reports menu
+    public static void displayReportsMenu(Scanner sC){
+
+        //?Loop for the menu
+        boolean menuApp = true;
+        while (menuApp) {
+
+            System.out.println("ReportsScreen\n");
+
+            System.out.println(" 1 - Month to date\n");
+
+            System.out.println(" 2 - Previous Month\n");
+
+            System.out.println(" 3 - Year to Date\n");
+
+            System.out.println(" 4 - Previous Year\n");
+
+            System.out.println(" 5 - Search by Vendor\n");
+
+            System.out.println(" 0 - Back");
+
+            System.out.println("Enter your command: ");
+
+            //*Catch users input
+            int command = sC.nextInt();
+
+            //*Catch next line
+            sC.nextLine();
+
+            //*Navigating through the menu
+            switch (command) {
+                case 0 -> menuApp = false;
+
+
+            }
+
+        }
+
+    }
+
+    //!Creating a metho
 
 
 }
