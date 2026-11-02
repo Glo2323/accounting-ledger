@@ -3,7 +3,6 @@ package com.pluralsight;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -27,7 +26,8 @@ public class AccountLedgerApp {
             //*Navigating through the menu
             switch (command) {
                 case 1 -> addDeposit(input);
-//                case 2 -> ;
+                case 2 -> makePayment(input);
+//                case 3 ->
                 case 4 -> menuApp = false;
 
 
@@ -70,7 +70,7 @@ public class AccountLedgerApp {
             LocalTime time = LocalTime.now();
 
             //*Creating buffer writer to write their deposit in the file
-            BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv"));
+            BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for how much there deposit
             System.out.println("How much would you like to deposit $");
@@ -85,7 +85,7 @@ public class AccountLedgerApp {
             String description = sC.nextLine();
 
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s",date, time, description, deposit );
+            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s\n",date, time, description, deposit );
 
             //*Writing the transaction onto the file
             bankWriter.write(writtenLine);
@@ -100,4 +100,57 @@ public class AccountLedgerApp {
         }
 
     }
+
+    //!Creating a method for depositing
+    public static void  makePayment(Scanner sC) {
+
+        //?Creating a try to catch any unexpected errors
+        try {
+
+            //*Setting up dates
+            LocalDate date = LocalDate.now();
+            LocalTime time = LocalTime.now();
+
+            //*Creating buffer writer to write their deposit in the file
+            BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
+
+            //*Asking for how much there deposit
+            System.out.println("How much would you like to Pay  $");
+
+            //*Catching there answer
+            String deposit = sC.nextLine();
+
+            //*Asking for a description
+            System.out.println("Small description: ");
+
+            //*Catching the answer
+            String description = sC.nextLine();
+
+            //*Formatting there deposit into the file
+            String writtenLine = String.format("%s|%.5s|Payment|%s|-%s\n",date, time, description, deposit );
+
+            //*Writing the transaction onto the file
+            bankWriter.write(writtenLine);
+
+            bankWriter.close();
+
+
+
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
+    //!Creating the ledger
+    public static String displayLedgerScreen(Scanner sC){
+
+
+
+
+    }
+
+
 }
+
