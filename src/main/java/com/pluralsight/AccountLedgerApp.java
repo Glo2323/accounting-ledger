@@ -1,6 +1,8 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -81,14 +83,21 @@ public class AccountLedgerApp {
             //*Catching there answer
             String deposit = sC.nextLine();
 
+            //*Asking for a vendor
+            System.out.println("Vendor: ");
+
+            //*Catching the answer
+            String vendor = sC.nextLine();
+
             //*Asking for a description
             System.out.println("Small description: ");
 
             //*Catching the answer
             String description = sC.nextLine();
 
+
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s\n",date, time, description, deposit );
+            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s|%s\n",date, time, vendor, description, deposit );
 
             //*Writing the transaction onto the file
             bankWriter.write(writtenLine);
@@ -123,6 +132,12 @@ public class AccountLedgerApp {
             //*Catching there answer
             String deposit = sC.nextLine();
 
+            //*Asking for a vendor
+            System.out.println("Vendor: ");
+
+            //*Catching the answer
+            String vendor = sC.nextLine();
+
             //*Asking for a description
             System.out.println("Small description: ");
 
@@ -130,7 +145,7 @@ public class AccountLedgerApp {
             String description = sC.nextLine();
 
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%.5s|Payment|%s|-%s\n",date, time, description, deposit );
+            String writtenLine = String.format("%s|%.5s|Payment|%s|%s|-%s\n",date, time, vendor, description, deposit );
 
             //*Writing the transaction onto the file
             bankWriter.write(writtenLine);
@@ -175,10 +190,10 @@ public class AccountLedgerApp {
 
             //*Navigating through the menu
             switch (command) {
-                case 1 -> addDeposit(sC);
+                case 1 -> allTransactions();
                 case 2 -> makePayment(sC);
                 case 3 -> displayLedgerScreen(sC);
-                case 4 -> menuApp = false;
+                case 5 -> menuApp = false;
 
 
             }
@@ -186,6 +201,44 @@ public class AccountLedgerApp {
         }
 
 
+
+    }
+
+    //!Creating print all transaction method
+    public static void allTransactions(){
+
+        //?Try catch to catch any unexpected errors
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+            //?Loop to go over all the transaction
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null){
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+
+                //*Display transaction info
+                System.out.println("Transaction");
+                System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n", date, time,type, vendor, description, amount);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
 
     }
 
