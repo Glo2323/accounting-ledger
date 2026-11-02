@@ -2,6 +2,9 @@ package com.pluralsight;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class AccountLedgerApp {
@@ -14,15 +17,16 @@ public class AccountLedgerApp {
 
 
         //?Loop for the menu
-
         boolean menuApp = true;
         while (menuApp) {
             int command = displayHomeMenu(input);
 
+            input.nextLine();
+
 
             //*Navigating through the menu
             switch (command) {
-//                case 1 ->    ;
+                case 1 -> addDeposit(input);
 //                case 2 -> ;
                 case 4 -> menuApp = false;
 
@@ -61,11 +65,15 @@ public class AccountLedgerApp {
         //?Creating a try to catch any unexpected errors
         try {
 
+            //*Setting up dates
+            LocalDate date = LocalDate.now();
+            LocalTime time = LocalTime.now();
+
             //*Creating buffer writer to write their deposit in the file
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv"));
 
             //*Asking for how much there deposit
-            System.out.print("How much would you like to deposit $");
+            System.out.println("How much would you like to deposit $");
 
             //*Catching there answer
             String deposit = sC.nextLine();
@@ -77,7 +85,14 @@ public class AccountLedgerApp {
             String description = sC.nextLine();
 
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%s|Deposit|%s|%s");
+            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s",date, time, description, deposit );
+
+            //*Writing the transaction onto the file
+            bankWriter.write(writtenLine);
+
+            bankWriter.close();
+
+
 
 
         } catch (Exception e) {
