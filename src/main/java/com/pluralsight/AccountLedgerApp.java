@@ -14,33 +14,18 @@ public class AccountLedgerApp {
         //?Creating my scanner
         Scanner input = new Scanner(System.in);
 
+        displayHomeMenu(input);
 
-        //?Loop for the menu
-        boolean menuApp = true;
-        while (menuApp) {
-            int command = displayHomeMenu(input);
-
-            input.nextLine();
-
-
-            //*Navigating through the menu
-            switch (command) {
-                case 1 -> addDeposit(input);
-                case 2 -> makePayment(input);
-//                case 3 ->
-                case 4 -> menuApp = false;
-
-
-            }
-
-        }
 
     }
 
 
     //!Creating  the menu to ask questions
-    public static int displayHomeMenu(Scanner sC) {
+    public static void displayHomeMenu(Scanner sC) {
 
+        //?Loop for the menu
+        boolean menuApp = true;
+        while (menuApp) {
 
         System.out.println("HomeScreen?\n");
 
@@ -54,9 +39,27 @@ public class AccountLedgerApp {
 
         System.out.println("Enter your command: ");
 
+        //*Catch users input
+        int command = sC.nextInt();
 
-        //*To catch our command
-        return sC.nextInt();
+        //*Catch next line
+        sC.nextLine();
+
+            //*Navigating through the menu
+            switch (command) {
+                case 1 -> addDeposit(sC);
+                case 2 -> makePayment(sC);
+                case 3 -> displayLedgerScreen(sC);
+                case 4 -> menuApp = false;
+
+
+            }
+
+        }
+
+
+
+
     }
 
     //!Creating a method for depositing
@@ -144,8 +147,43 @@ public class AccountLedgerApp {
     }
 
     //!Creating the ledger
-    public static String displayLedgerScreen(Scanner sC){
+    public static void displayLedgerScreen(Scanner sC){
 
+        //?Loop for the menu
+        boolean menuApp = true;
+        while (menuApp) {
+
+            System.out.println("LedgerScreen?\n");
+
+            System.out.println(" 1 - All\n");
+
+            System.out.println(" 2 - Deposit only\n");
+
+            System.out.println(" 3 - Payments only\n");
+
+            System.out.println(" 4 - Reports\n");
+
+            System.out.println(" 5 - Home");
+
+            System.out.println("Enter your command: ");
+
+            //*Catch users input
+            int command = sC.nextInt();
+
+            //*Catch next line
+            sC.nextLine();
+
+            //*Navigating through the menu
+            switch (command) {
+                case 1 -> addDeposit(sC);
+                case 2 -> makePayment(sC);
+                case 3 -> displayLedgerScreen(sC);
+                case 4 -> menuApp = false;
+
+
+            }
+
+        }
 
 
 
