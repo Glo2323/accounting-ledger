@@ -17,9 +17,16 @@ import static java.util.Collections.sort;
 
 public class AccountLedgerApp {
 
-
     public static void main(String[] args) {
 
+
+        System.out.println(
+                Colors.BLUE +
+                        "📜════════════ ACCOUNT LEDGER ════════════📜\n" +
+                        "      AVATAR FIGURES & COLLECTIBLES\n" +
+                        "📜════════════════════════════════════════📜"
+                        + Colors.RESET
+        );
         //?Creating my scanner
         Scanner input = new Scanner(System.in);
 
@@ -37,17 +44,24 @@ public class AccountLedgerApp {
         boolean menuApp = true;
         while (menuApp) {
 
-        System.out.println("HomeScreen?\n");
+            System.out.println( Colors.PURPLE +
+                    "\n🎴═════════════ MAIN MENU ══════════════🎴\n" +
+                     Colors.RESET +
+                    "  1️  Add Deposit\n" +
+                    "  2️  Make Payment\n" +
+                    "  3️  View Ledger\n" +
+                    "  4️  Exit\n" +
 
-        System.out.println(" 1 - Add Deposit\n");
+                    Colors.PURPLE +
+                    "🎴══════════════════════════════════════════🎴"
+                    + Colors.RESET
+            );
 
-        System.out.println(" 2 - Make Payment\n");
-
-        System.out.println(" 3 - Ledger\n");
-
-        System.out.println(" 4 - Exit\n");
-
-        System.out.println("Enter your command: ");
+            System.out.print(
+                    Colors.PURPLE +
+                            "\n➡️  Enter your command: "
+                            + Colors.RESET
+            );
 
         //*Catch users input
         int command = sC.nextInt();
@@ -740,46 +754,55 @@ public class AccountLedgerApp {
             //*Asking for a start date
             System.out.println("What's the Start date Ex(2025-6-20)\n" +
                     " Press Enter to Skip:" );
+
                 //*Catching the answer
                 String start = scanner.nextLine().trim();
+
                 //*parsing the date if they enter a date
                 LocalDate startDate = start.isEmpty() ? null : LocalDate.parse(start);
 
             //*Asking for a end date
             System.out.println("What's the End date Ex(2025-6-20)\n" +
                     " Press Enter to Skip:" );
+
             //*Catching the answer
             String end = scanner.nextLine().trim();
+
             //*parsing the date if they enter a date
             LocalDate endDate = end.isEmpty() ? null : LocalDate.parse(end);
 
             //*Asking for a type
             System.out.println("What's the Type\n" +
                     " Press Enter to Skip:" );
+
             //*Catching the answer
             String type = scanner.nextLine().trim();
 
             //*Asking for a vendor
             System.out.println("What's the Vendor\n" +
                     "Press Enter to Skip:" );
+
             //*Catching the answer
             String vendor = scanner.nextLine().trim();
-            //*Asking for a descri
+            //*Asking for a description
             System.out.println("What's the Description\n" +
                     "Press Enter to Skip:" );
 
+            //*Catching the answer
             String description = scanner.nextLine().trim();
 
+            //*Asking for a dollar amount
             System.out.println("What's the amount\n" +
                     "Press Enter 0 to Skip:" );
 
+            //*Catching the answer
             double amount = scanner.nextDouble();
 
-
+            //?Loop going through my transactions filtering out
             for (Transaction demo : transactionsList) {
 
 
-
+                //? if statements to print out filter choice
                 if ( startDate == null) {
 
                 }
