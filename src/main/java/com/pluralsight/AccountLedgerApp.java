@@ -22,6 +22,7 @@ public class AccountLedgerApp {
         //?Creating my scanner
         Scanner input = new Scanner(System.in);
 
+        //?Calling the Menu
         displayHomeMenu(input);
 
 
@@ -214,6 +215,9 @@ public class AccountLedgerApp {
     //!Creating print all transaction method
     public static void allTransactions(){
 
+        //?Creating my list to track my transactions
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
         //?Try catch to catch any unexpected errors
         try {
             //*BufferedReader to read the file
@@ -236,12 +240,21 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
-                //*Display transaction info
-                System.out.println("Transaction");
-                System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                        date, time,type, vendor, description, amount);
 
+
+            }
+            //?Creating a loop to display the transactions in order
+            for (Transaction demo : transactionsList) {
+            //*Display transaction info
+            System.out.println("Transaction");
+            System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                    demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                    demo.getDescription(), demo.getAmount());
             }
             bankReader.close();
 
@@ -254,6 +267,9 @@ public class AccountLedgerApp {
     //!Creating a method to print only deposits
     public static void onlyDeposits(){
 
+        //?Creating my list to track my transactions
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
         //?Try catch to catch any unexpected errors
         try {
             //*BufferedReader to read the file
@@ -276,16 +292,21 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
-                //*If statement  to only print out equal statement
-                if (type.equals("Deposit")) {
 
-                    //*Display transaction info
-                    System.out.println("Transaction");
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            date, time, type, vendor, description, amount);
 
-                }
+            }
+            //?Creating a loop to display the transactions in order
+            for (Transaction demo : transactionsList) {
+                //*Display transaction info
+                System.out.println("Transaction");
+                System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                        demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                        demo.getDescription(), demo.getAmount());
             }
             bankReader.close();
 
@@ -299,6 +320,9 @@ public class AccountLedgerApp {
     //!Creating a method to print only payments
     public static void onlyPayments(){
 
+        //?Creating my list to track my transactions
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
         //?Try catch to catch any unexpected errors
         try {
             //*BufferedReader to read the file
@@ -321,16 +345,21 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
-                //*If statement  to only print out equal statement
-                if (type.equals("Payment")) {
 
-                    //*Display transaction info
-                    System.out.println("Transaction");
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            date, time, type, vendor, description, amount);
 
-                }
+            }
+            //?Creating a loop to display the transactions in order
+            for (Transaction demo : transactionsList) {
+                //*Display transaction info
+                System.out.println("Transaction");
+                System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                        demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                        demo.getDescription(), demo.getAmount());
             }
             bankReader.close();
 
@@ -377,6 +406,7 @@ public class AccountLedgerApp {
                 case 2 -> previousMonth();
                 case 3 -> yearToDate();
                 case 4 -> previousYear();
+                case 5  -> searchByVendor(sC);
 
 
             }
@@ -388,6 +418,7 @@ public class AccountLedgerApp {
     //!Creating a method that shows month to date Transactions
     public  static void monthToDate(){
 
+        //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
 
         //?Try catch to catch any unexpected errors
@@ -444,6 +475,7 @@ public class AccountLedgerApp {
     //!Creating a method that shows previous month Transaction
     public  static void previousMonth(){
 
+        //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
 
         //?Try catch to catch any unexpected errors
@@ -501,6 +533,7 @@ public class AccountLedgerApp {
     //!Creating a method that shows Year to date Transaction
     public static void yearToDate(){
 
+        //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
 
         //?Try catch to catch any unexpected errors
@@ -606,6 +639,62 @@ public class AccountLedgerApp {
             bankReader.close();
 
         } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
+    }
+
+    //!Creating a method that can search by vendor
+    public static void searchByVendor(Scanner scanner){
+        //?Creating my list to track my transactions
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+            //*Asking question
+            System.out.println("What is the vendor name:");
+            String vendorName = scanner.next();
+
+            //?Loop over the list to find all matching names
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null) {
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
+
+
+
+            }
+            //?Creating a loop to display the transactions in order
+            for (Transaction demo : transactionsList) {
+
+                if (vendorName.equalsIgnoreCase(demo.getVendor())) {
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+
+                }
+            }
+            bankReader.close();
+        }
+        catch (Exception e){
             System.out.println("Error" + e.getMessage());
         }
     }

@@ -1,51 +1,89 @@
-2026-11-02|14:08|Deposit|JPMorgan|worklife|2000
-2026-11-02|14:08|Deposit|JPMorgan|worklife|2000
-2026-10-28|09:15|Payment|Amazon|shopping|-89.99
-2026-09-14|13:42|Deposit|PayPal|freelance|650
-2026-08-03|18:21|Payment|Costco|groceries|-176.43
-2026-07-22|08:55|Payment|Shell|gas|-48.67
-2026-06-11|12:34|Deposit|Chase|bonus|500
-2026-05-07|16:17|Payment|Netflix|entertainment|-15.49
-2026-04-18|10:48|Payment|Target|shopping|-92.15
-2026-03-09|07:12|Deposit|Venmo|transfer|250
-2026-02-25|19:35|Payment|Uber|transport|-24.61
-2026-01-13|11:29|Payment|Walmart|groceries|-131.84
-2025-12-28|08:02|Deposit|JPMorgan|worklife|2000
-2025-12-15|17:25|Payment|BestBuy|electronics|-449.99
-2025-11-30|13:40|Payment|Chevron|gas|-56.72
-2025-11-18|09:18|Deposit|PayPal|refund|125
-2025-10-27|20:14|Payment|Spotify|subscription|-10.99
-2025-10-12|11:22|Payment|McDonalds|food|-13.76
-2025-09-25|15:37|Deposit|CashApp|transfer|300
-2025-09-08|18:50|Payment|HomeDepot|home|-207.44
-2025-08-22|10:13|Payment|CVS|health|-28.95
-2025-08-04|08:41|Deposit|BankOfAmerica|reimbursement|150
-2025-07-29|14:56|Payment|Nike|shopping|-138.99
-2025-07-11|19:45|Payment|Exxon|gas|-51.38
-2025-06-23|09:26|Deposit|Chase|bonus|800
-2025-06-05|12:31|Payment|DoorDash|food|-27.47
-2025-05-19|16:10|Payment|Kroger|groceries|-109.53
-2025-05-02|08:49|Deposit|PayPal|freelance|725
-2025-04-17|17:20|Payment|Apple|electronics|-999.00
-2025-04-01|13:11|Payment|Walgreens|health|-21.62
-2025-03-14|09:05|Deposit|Venmo|gift|100
-2025-03-02|19:55|Payment|Lyft|transport|-18.34
-2025-02-20|11:43|Payment|TraderJoes|groceries|-82.17
-2025-02-08|07:54|Deposit|JPMorgan|interest|23
-2025-01-26|15:29|Payment|DisneyPlus|entertainment|-13.99
-2025-01-09|18:02|Payment|Subway|food|-11.95
-2026-10-02|08:30|Deposit|JPMorgan|worklife|2000
-2026-09-17|13:14|Payment|Amazon|shopping|-71.28
-2026-08-28|18:44|Payment|BP|gas|-62.55
-2026-07-04|09:40|Deposit|PayPal|refund|210
-2026-06-16|14:53|Payment|Costco|groceries|-189.76
-2026-05-27|19:10|Payment|Starbucks|food|-8.72
-2026-04-08|10:25|Deposit|CashApp|transfer|175
-2026-03-30|16:18|Payment|TJMaxx|shopping|-67.45
-2026-02-14|20:31|Payment|UberEats|food|-32.18
-2026-01-05|08:57|Deposit|BankOfAmerica|bonus|900
-2025-12-10|13:46|Payment|PlanetFitness|fitness|-24.99
-2025-11-07|18:23|Payment|Shell|gas|-47.86
-2025-10-03|09:11|Deposit|Venmo|transfer|220
-2025-08-16|15:09|Payment|Target|shopping|-54.33
-2025-06-09|19:41|Payment|Chipotle|food|-15.82
+2025-01-03|10:15|Deposit|AnimeCollector92|Gojo Figure Purchase|89.99
+2025-01-05|14:22|Payment|GoodSmileCompany|Inventory Restock|-450.00
+2025-01-12|11:17|Deposit|SailorMoonFan|Anime Mystery Box Purchase|39.99
+2025-01-20|08:50|Payment|Shopify|Monthly Store Subscription|-39.00
+2025-02-06|09:21|Deposit|PirateKingFan|OnePiece Figure Purchase|94.99
+2025-02-17|09:42|Payment|MetaAds|Facebook Advertisement|-120.00
+2025-02-24|12:20|Payment|GoodSmileCompany|Nendoroid Restock|-750.00
+2025-02-27|13:06|Deposit|Gear5Collector|OnePiece Figure Purchase|179.99
+2025-03-08|11:25|Deposit|AnimeAddict|ChainsawMan Figure Purchase|129.99
+2025-03-13|09:52|Payment|Shopify|Monthly Subscription|-39.00
+2025-03-26|10:40|Deposit|HeroAcademiaTX|Bakugo Figure Purchase|139.99
+2025-03-29|16:18|Payment|FedEx|Packaging Materials|-87.11
+2025-04-02|11:11|Deposit|ShadowMonarch|SoloLeveling Figure Purchase|159.99
+2025-04-15|12:36|Payment|GoodSmileCompany|Anime Figure Restock|-800.00
+2025-04-21|17:41|Deposit|KonohaLegend|Naruto Jacket Purchase|69.99
+2025-04-28|18:10|Deposit|GearFourth|Luffy Figure Purchase|119.99
+2025-05-04|14:55|Payment|Bandai|Inventory Purchase|-670.00
+2025-05-10|16:21|Deposit|AnimeVault|Mystery Anime Crate|74.99
+2025-05-16|10:08|Deposit|BleachBankai|Ichigo Sword Replica|164.99
+2025-05-22|09:45|Payment|FedEx|Shipping Materials|-93.77
+2025-06-03|08:41|Deposit|DemonSlayerTX|Tanjiro Figure Purchase|119.99
+2025-06-09|11:17|Payment|Bandai|DemonSlayer Inventory|-590.00
+2025-06-21|15:11|Deposit|AnimeWarehouse|Figure Combination Order|299.99
+2025-06-27|16:05|Payment|Shopify|Monthly Subscription|-39.00
+2025-07-05|14:57|Payment|GoodSmileCompany|Inventory Restock|-725.00
+2025-07-11|18:50|Deposit|GearFiveKing|OnePiece Figure Purchase|189.99
+2025-07-21|15:03|Deposit|VillainHunter|MHA Figure Purchase|124.99
+2025-07-24|08:54|Payment|FedEx|Shipping Supplies|-74.41
+2025-08-02|11:55|Deposit|OtakuPrime|Deluxe Figure Order|329.99
+2025-08-05|14:39|Payment|Bandai|Inventory Refill|-910.00
+2025-08-18|10:43|Deposit|NinjaWay|Naruto Figure Purchase|104.99
+2025-08-24|14:29|Payment|Shopify|Monthly Subscription|-39.00
+2025-09-02|09:50|Deposit|TitanSquad|AOT Figure Purchase|129.99
+2025-09-05|13:14|Payment|GoodSmileCompany|Inventory Order|-835.00
+2025-09-20|14:57|Deposit|ShadowHunter|SoloLeveling Figure Purchase|174.99
+2025-09-23|08:32|Payment|FedEx|Packaging Costs|-81.56
+2025-10-08|10:22|Deposit|DragonWarrior|DragonBall Figure Purchase|149.99
+2025-10-14|11:56|Payment|Shopify|Monthly Subscription|-39.00
+2025-10-21|14:05|Deposit|StrawHatCaptain|OnePiece Figure Purchase|134.99
+2025-10-24|10:48|Payment|UPS|Shipping Costs|-72.87
+2025-11-01|12:19|Deposit|AnimeEmpire|Bulk Figure Order|449.99
+2025-11-04|09:26|Payment|GoodSmileCompany|Holiday Inventory|-1200.00
+2025-11-22|11:10|Deposit|GearFiveLegend|OnePiece Statue Purchase|279.99
+2025-11-26|16:28|Payment|FedEx|Holiday Shipping Supplies|-140.25
+2025-11-30|18:02|Deposit|AnimeChampion|Premium Figure Purchase|319.99
+2026-01-04|10:12|Deposit|AnimeKnight|DragonBall Figure Purchase|159.99
+2026-01-07|13:48|Payment|Bandai|January Inventory Restock|-825.00
+2026-01-18|09:45|Deposit|TitanCollector|Levi Figure Purchase|134.99
+2026-01-22|14:11|Payment|FedEx|Shipping Supplies|-91.42
+2026-02-02|10:56|Deposit|BankaiLegend|Bleach Sword Replica Purchase|169.99
+2026-02-05|16:32|Payment|GoodSmileCompany|Figure Inventory Purchase|-975.00
+2026-02-18|11:35|Deposit|ShadowMonarch|SoloLeveling Figure Purchase|189.99
+2026-02-24|18:29|Deposit|SaiyanPrince|Vegeta Collectors Figure|279.99
+2026-03-03|08:54|Payment|USPS|Shipping Labels|-73.19
+2026-03-08|17:08|Deposit|DemonHunterX|Tanjiro Figure Purchase|124.99
+2026-03-12|10:25|Payment|Bandai|Anime Expo Inventory|-1100.00
+2026-03-20|09:43|Deposit|HeroAcademyFan|Bakugo Figure Purchase|144.99
+2026-04-02|10:14|Deposit|GearFiveKing|Luffy Statue Purchase|349.99
+2026-04-06|15:32|Payment|GoodSmileCompany|Premium Figure Order|-1450.00
+2026-04-21|14:36|Deposit|AnimeCollectorTX|Collectors Bundle Purchase|289.99
+2026-04-27|12:55|Deposit|OnePieceTreasures|Zoro Figure Purchase|154.99
+2026-05-03|08:40|Payment|MetaAds|Anime Expo Ads|-300.00
+2026-05-06|17:18|Deposit|StrawHatCaptain|Gear 5 Figure Purchase|399.99
+2026-05-16|10:05|Deposit|DemonSlayerFan|Nezuko Figure Purchase|114.99
+2026-05-25|09:35|Payment|UPS|Shipping Materials|-88.34
+2026-06-04|12:16|Deposit|OtakuNation|Anime Hoodie Bundle|94.99
+2026-06-07|15:49|Payment|Shopify|Monthly Subscription|-39.00
+2026-06-15|17:27|Deposit|MangaCollectorPro|Rare Manga Bundle|349.99
+2026-06-18|10:42|Payment|GoodSmileCompany|Summer Inventory|-1275.00
+2026-07-05|10:08|Deposit|PirateKingFan|OnePiece Figure Purchase|129.99
+2026-07-12|15:04|Payment|FedEx|Shipping Expenses|-102.77
+2026-07-16|11:28|Deposit|AnimeVault|Wholesale Customer Order|624.99
+2026-07-25|08:45|Payment|Bandai|Inventory Refill|-995.00
+2026-08-03|12:09|Deposit|OtakuDreams|Mystery Anime Crate|89.99
+2026-08-06|14:47|Payment|Shopify|Monthly Subscription|-39.00
+2026-08-23|13:30|Deposit|GearFiveLegend|OnePiece Statue Purchase|319.99
+2026-08-29|15:57|Deposit|AnimeMasterTX|Convention Purchase|549.99
+2026-09-03|11:11|Payment|GoodSmileCompany|Fall Inventory|-1380.00
+2026-09-07|17:19|Deposit|MoonPrismPower|SailorMoon Bundle|139.99
+2026-09-21|18:03|Deposit|AnimeWarehouse|Bulk Figure Order|799.99
+2026-10-02|15:13|Payment|FedEx|Shipping Materials|-118.54
+2026-10-05|11:37|Deposit|OtakuEmpire|Anime Mystery Bundle|124.99
+2026-10-14|10:12|Payment|Bandai|Holiday Inventory Purchase|-1825.00
+2026-10-23|18:25|Deposit|PirateCrewLeader|OnePiece Ultimate Bundle|459.99
+2026-10-27|09:48|Payment|Shopify|Monthly Subscription|-39.00
+2026-11-01|12:14|Deposit|UltimateOtaku|Pre-Holiday Figure Order|699.99
+2026-11-01|14:37|Deposit|AnimeLegendTX|Holiday Collector Box Purchase|189.99
+2026-11-02|10:18|Payment|GoodSmileCompany|Winter Inventory Restock|-1450.00
+2026-11-03|17:44|Deposit|MangaVault|Premium Manga Bundle Purchase|279.99
