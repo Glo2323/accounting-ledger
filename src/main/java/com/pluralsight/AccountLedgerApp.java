@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.*;
 import java.time.chrono.ChronoLocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -374,6 +376,7 @@ public class AccountLedgerApp {
                 case 1 -> monthToDate();
                 case 2 -> previousMonth();
                 case 3 -> yearToDate();
+                case 4 -> previousYear();
 
 
             }
@@ -384,6 +387,8 @@ public class AccountLedgerApp {
 
     //!Creating a method that shows month to date Transactions
     public  static void monthToDate(){
+
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
 
         //?Try catch to catch any unexpected errors
         try {
@@ -407,7 +412,14 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
+            }
+            //?To print out the sorted lists
+            for (Transaction demo : transactionsList) {
                 //*If statement  to only print out equal statement
                 if (LocalDate.now().getMonth() == demo.getDate().getMonth() &&
                         LocalDate.now().getYear() == demo.getDate().getYear()) {
@@ -415,7 +427,8 @@ public class AccountLedgerApp {
                     //*Display transaction info
                     System.out.println("Transaction");
                     System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            date, time, type, vendor, description, amount);
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
 
                 }
             }
@@ -431,6 +444,8 @@ public class AccountLedgerApp {
     //!Creating a method that shows previous month Transaction
     public  static void previousMonth(){
 
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
         //?Try catch to catch any unexpected errors
         try {
             //*BufferedReader to read the file
@@ -453,17 +468,25 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
-                //*If statement  to only print out equal statement
+            }
+            //?To print out the sorted lists
+            for (Transaction demo : transactionsList) {
                 //?Setting up my month placement
                 LocalDate lastMonth = LocalDate.now().minusMonths(1);
-                if ( demo.getDate().getMonth() == lastMonth.getMonth() &&
-                        LocalDate.now().getYear() == demo.getDate().getYear() )   {
+                //*If statement  to only print out equal statement
+                if (demo.getDate().getMonth() == lastMonth.getMonth() &&
+                        LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
                     System.out.println("Transaction");
                     System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            date, time, type, vendor, description, amount);
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
 
                 }
             }
@@ -477,6 +500,9 @@ public class AccountLedgerApp {
 
     //!Creating a method that shows Year to date Transaction
     public static void yearToDate(){
+
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
         //?Try catch to catch any unexpected errors
         try {
             //*BufferedReader to read the file
@@ -499,15 +525,22 @@ public class AccountLedgerApp {
 
                 //!Creating the transaction
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
 
-
+            }
+            //?To print out the sorted lists
+            for (Transaction demo : transactionsList) {
                 //*If statement  to only print out equal statement
                 if (LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
                     System.out.println("Transaction");
                     System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            date, time, type, vendor, description, amount);
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
 
                 }
             }
@@ -517,6 +550,66 @@ public class AccountLedgerApp {
             System.out.println("Error" + e.getMessage());
         }
     }
+
+    //!Creating a method that shows previous year Transaction
+    public static void previousYear(){
+
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
+        //?Try catch to catch any unexpected errors
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+
+            //?Loop to go over all the transaction
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null){
+
+
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
+
+
+            }
+            //?To print out the sorted lists
+            for (Transaction demo : transactionsList) {
+                //*Setting up last year placement
+                LocalDate lastYear = LocalDate.now().minusYears(1);
+                //*If statement  to only print out equal statement
+                if (demo.getDate().getYear() == lastYear.getYear()) {
+
+                    //*Display transaction info
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+
+                }
+            }
+            bankReader.close();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
+    }
+
 
 
 
