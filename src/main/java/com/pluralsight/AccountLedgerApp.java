@@ -364,7 +364,8 @@ public class AccountLedgerApp {
             //*Navigating through the menu
             switch (command) {
                 case 0 -> menuApp = false;
-                case 1 -> monthToDate(sC);
+                case 1 -> monthToDate();
+                case 2 -> previousMonth();
 
 
             }
@@ -374,7 +375,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that shows month to date Transactions
-    public  static void monthToDate(Scanner sC){
+    public  static void monthToDate(){
 
         //?Try catch to catch any unexpected errors
         try {
@@ -400,7 +401,8 @@ public class AccountLedgerApp {
                 Transaction demo = new Transaction(date, time, type, vendor, description, amount);
 
                 //*If statement  to only print out equal statement
-                if (LocalDate.now().getMonth() == demo.getDate().getMonth() && LocalDate.now().getYear() == demo.getDate().getYear()) {
+                if (LocalDate.now().getMonth() == demo.getDate().getMonth() &&
+                        LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
                     System.out.println("Transaction");
@@ -414,6 +416,52 @@ public class AccountLedgerApp {
             System.out.println("Error" + e.getMessage());
         }
 
+
+    }
+
+    //!Creating a method that shows previous month Transaction
+    public  static void previousMonth(){
+
+        //?Try catch to catch any unexpected errors
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+            //?Loop to go over all the transaction
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null){
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+
+                //*If statement  to only print out equal statement
+                //?Setting up my month placement
+                LocalDate lastMonth = LocalDate.now().minusMonths(1);
+                if ( demo.getDate().getMonth() == lastMonth.getMonth() &&
+                        LocalDate.now().getYear() == demo.getDate().getYear() )   {
+
+                    //*Display transaction info
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n", date, time, type, vendor, description, amount);
+
+                }
+            }
+            bankReader.close();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
 
     }
 
