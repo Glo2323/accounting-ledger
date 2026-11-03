@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.*;
+import java.time.chrono.ChronoLocalDate;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -389,6 +390,8 @@ public class AccountLedgerApp {
 
             System.out.println(" 5 - Search by Vendor\n");
 
+            System.out.println(" 6 - Custom Search\n");
+
             System.out.println(" 0 - Back");
 
             System.out.println("Enter your command: ");
@@ -407,6 +410,7 @@ public class AccountLedgerApp {
                 case 3 -> yearToDate();
                 case 4 -> previousYear();
                 case 5  -> searchByVendor(sC);
+                case 6  -> customSearch(sC);
 
 
             }
@@ -697,6 +701,153 @@ public class AccountLedgerApp {
         catch (Exception e){
             System.out.println("Error" + e.getMessage());
         }
+    }
+
+    //!Creating a method that can filter search
+    public static void customSearch(Scanner scanner){
+
+        //?Creating my list to track my transactions
+        ArrayList<Transaction> transactionsList = new ArrayList<>();
+
+        try {
+            //*BufferedReader to read the file
+            BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
+
+            //?Loop over the list to find all matching names
+            String transaction;
+            while ((transaction = bankReader.readLine()) != null) {
+
+                //* Placing the info into a list
+                String[] transactionInfo = transaction.split("\\|");
+
+                //*Assigning the info into there parts
+                LocalDate date = LocalDate.parse(transactionInfo[0]);
+                LocalTime time = LocalTime.parse(transactionInfo[1]);
+                String type = transactionInfo[2];
+                String vendor = transactionInfo[3];
+                String description = transactionInfo[4];
+                double amount = Double.parseDouble(transactionInfo[5]);
+
+                //!Creating the transaction
+                Transaction demo = new Transaction(date, time, type, vendor, description, amount);
+                transactionsList.add(demo);
+                //?Sorting the transaction from newest to oldest
+                transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
+                        .thenComparing(Transaction::getDescription).reversed());
+
+            }
+            //*Prompting the user for questions to create the filter
+            //*Asking for a start date
+            System.out.println("What's the Start date Ex(2025-6-20)\n" +
+                    " Press Enter to Skip:" );
+                //*Catching the answer
+                String start = scanner.nextLine().trim();
+                //*parsing the date if they enter a date
+                LocalDate startDate = start.isEmpty() ? null : LocalDate.parse(start);
+
+            //*Asking for a end date
+            System.out.println("What's the End date Ex(2025-6-20)\n" +
+                    " Press Enter to Skip:" );
+            //*Catching the answer
+            String end = scanner.nextLine().trim();
+            //*parsing the date if they enter a date
+            LocalDate endDate = end.isEmpty() ? null : LocalDate.parse(end);
+
+            //*Asking for a type
+            System.out.println("What's the Type\n" +
+                    " Press Enter to Skip:" );
+            //*Catching the answer
+            String type = scanner.nextLine().trim();
+
+            //*Asking for a vendor
+            System.out.println("What's the Vendor\n" +
+                    "Press Enter to Skip:" );
+            //*Catching the answer
+            String vendor = scanner.nextLine().trim();
+            //*Asking for a descri
+            System.out.println("What's the Description\n" +
+                    "Press Enter to Skip:" );
+
+            String description = scanner.nextLine().trim();
+
+            System.out.println("What's the amount\n" +
+                    "Press Enter 0 to Skip:" );
+
+            double amount = scanner.nextDouble();
+
+
+            for (Transaction demo : transactionsList) {
+
+
+
+                if ( startDate == null) {
+
+                }
+                else if  (demo.getDate().isAfter(startDate) && demo.getDate().isBefore(endDate)) {
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                }
+                if (endDate == null) {
+
+                }
+
+
+                if (type.equalsIgnoreCase("null")) {
+
+                }
+                else if (demo.getType().equalsIgnoreCase(type)){
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                }
+
+
+                if (vendor.equalsIgnoreCase("null")) {
+
+                }
+                else if (demo.getVendor().equalsIgnoreCase(vendor)){
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+
+                }
+
+
+                if (description.equalsIgnoreCase("null")) {
+
+                }
+                else if (demo.getDescription().equalsIgnoreCase(description)){
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                }
+
+
+                if(amount == 0){
+
+                }
+                else  if (demo.getAmount() == amount){
+                    System.out.println("Transaction");
+                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                }
+
+            }
+
+
+        }
+        catch (Exception e){
+
+            System.out.println("Error" + e.getMessage());
+
+        }
+
     }
 
 
