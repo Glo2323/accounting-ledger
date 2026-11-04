@@ -44,9 +44,9 @@ public class AccountLedgerApp {
         boolean menuApp = true;
         while (menuApp) {
 
-            System.out.println( Colors.PURPLE +
+            System.out.println(Colors.PURPLE +
                     "\n🎴═════════════ MAIN MENU ═══════════════════🎴\n" +
-                     Colors.RESET + Colors.BOLD +
+                    Colors.RESET + Colors.BOLD +
                     " 🟢 1️  Add Deposit\n" +
                     " 🔴 2️  Make Payment\n" +
                     " 📜 3️  View Ledger\n" +
@@ -63,11 +63,11 @@ public class AccountLedgerApp {
                             + Colors.RESET
             );
 
-        //*Catch users input
-        int command = sC.nextInt();
+            //*Catch users input
+            int command = sC.nextInt();
 
-        //*Catch next line
-        sC.nextLine();
+            //*Catch next line
+            sC.nextLine();
 
             //*Navigating through the menu
             switch (command) {
@@ -82,12 +82,10 @@ public class AccountLedgerApp {
         }
 
 
-
-
     }
 
     //!Creating a method for depositing
-    public static void  addDeposit(Scanner sC) {
+    public static void addDeposit(Scanner sC) {
 
         //?Creating a try to catch any unexpected errors
         try {
@@ -119,14 +117,12 @@ public class AccountLedgerApp {
 
 
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s|%s\n",date, time, vendor, description, deposit );
+            String writtenLine = String.format("%s|%.5s|Deposit|%s|%s|%s\n", date, time, vendor, description, deposit);
 
             //*Writing the transaction onto the file
             bankWriter.write(writtenLine);
 
             bankWriter.close();
-
-
 
 
         } catch (Exception e) {
@@ -136,7 +132,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method for depositing
-    public static void  makePayment(Scanner sC) {
+    public static void makePayment(Scanner sC) {
 
         //?Creating a try to catch any unexpected errors
         try {
@@ -167,14 +163,12 @@ public class AccountLedgerApp {
             String description = sC.nextLine();
 
             //*Formatting there deposit into the file
-            String writtenLine = String.format("%s|%.5s|Payment|%s|%s|-%s\n",date, time, vendor, description, deposit );
+            String writtenLine = String.format("%s|%.5s|Payment|%s|%s|-%s\n", date, time, vendor, description, deposit);
 
             //*Writing the transaction onto the file
             bankWriter.write(writtenLine);
 
             bankWriter.close();
-
-
 
 
         } catch (Exception e) {
@@ -184,7 +178,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating the ledger
-    public static void displayLedgerScreen(Scanner sC){
+    public static void displayLedgerScreen(Scanner sC) {
 
         //?Loop for the menu
         boolean menuApp = true;
@@ -230,11 +224,10 @@ public class AccountLedgerApp {
         }
 
 
-
     }
 
     //!Creating print all transaction method
-    public static void allTransactions(){
+    public static void allTransactions() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -246,7 +239,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -267,7 +260,6 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
 
-
             }
             //*Title
             System.out.println(
@@ -276,8 +268,8 @@ public class AccountLedgerApp {
                             + Colors.RESET
             );
 
-            System.out.printf( Colors.BOLD +
-                    "%-12s %-8s %-10s %-20s %-25s %10s\n",
+            System.out.printf(Colors.BOLD +
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
                     "Time",
                     "Type",
@@ -294,17 +286,17 @@ public class AccountLedgerApp {
 
             //?Creating a loop to display the transactions in order
             for (Transaction demo : transactionsList) {
-            //*Display transaction info
-            System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                //*Display transaction info
+                System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
-            //*Changing the color for type depending on what kinda it is
-            String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                //*Changing the color for type depending on what kinda it is
+                String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                         ? Colors.GREEN + demo.getType() + Colors.RESET
                         : Colors.RED + demo.getType() + Colors.RESET;
 
-            System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                    demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                    demo.getDescription(), demo.getAmount());
+                System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                        demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                        demo.getDescription(), demo.getAmount());
             }
             bankReader.close();
 
@@ -315,7 +307,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method to print only deposits
-    public static void onlyDeposits(){
+    public static void onlyDeposits() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -327,7 +319,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -348,7 +340,6 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
 
-
             }
             //* Title
             System.out.println(
@@ -358,7 +349,7 @@ public class AccountLedgerApp {
             );
 
             System.out.printf(Colors.BOLD +
-                    "%-12s %-8s %-10s %-20s %-25s %10s\n",
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
                     "Time",
                     "Type",
@@ -378,7 +369,7 @@ public class AccountLedgerApp {
                 //*Display transaction info
                 if (demo.getType().equalsIgnoreCase("Deposit")) {
 
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -400,7 +391,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method to print only payments
-    public static void onlyPayments(){
+    public static void onlyPayments() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -412,7 +403,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -431,7 +422,6 @@ public class AccountLedgerApp {
                 //?Sorting the transaction from newest to oldest
                 transactionsList.sort(Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime)
                         .thenComparing(Transaction::getDescription).reversed());
-
 
 
             }
@@ -462,7 +452,7 @@ public class AccountLedgerApp {
             for (Transaction demo : transactionsList) {
                 //*Display transaction info
                 if (demo.getType().equalsIgnoreCase("Payment")) {
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -485,7 +475,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method to display the reports menu
-    public static void displayReportsMenu(Scanner sC){
+    public static void displayReportsMenu(Scanner sC) {
 
         //?Loop for the menu
         boolean menuApp = true;
@@ -526,8 +516,8 @@ public class AccountLedgerApp {
                 case 2 -> previousMonth();
                 case 3 -> yearToDate();
                 case 4 -> previousYear();
-                case 5  -> searchByVendor(sC);
-                case 6  -> customSearch(sC);
+                case 5 -> searchByVendor(sC);
+                case 6 -> customSearch(sC);
 
 
             }
@@ -537,7 +527,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that shows month to date Transactions
-    public  static void monthToDate(){
+    public static void monthToDate() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -549,7 +539,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -578,13 +568,13 @@ public class AccountLedgerApp {
             );
 
             System.out.printf(Colors.BOLD +
-                    "%-12s %-8s %-10s %-20s %-25s %10s\n",
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
                     "Time",
                     "Type",
                     "Vendor",
                     "Description",
-                    "Amount"  + Colors.RESET
+                    "Amount" + Colors.RESET
             );
 
             System.out.println(
@@ -601,7 +591,7 @@ public class AccountLedgerApp {
                         LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -624,7 +614,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that shows previous month Transaction
-    public  static void previousMonth(){
+    public static void previousMonth() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -636,7 +626,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -664,8 +654,8 @@ public class AccountLedgerApp {
                             + Colors.RESET
             );
 
-            System.out.printf( Colors.BOLD +
-                    "%-12s %-8s %-10s %-20s %-25s %10s\n",
+            System.out.printf(Colors.BOLD +
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
                     "Time",
                     "Type",
@@ -681,7 +671,6 @@ public class AccountLedgerApp {
             );
 
 
-
             //?To print out the sorted lists
             for (Transaction demo : transactionsList) {
                 //?Setting up my month placement
@@ -691,7 +680,7 @@ public class AccountLedgerApp {
                         LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -713,7 +702,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that shows Year to date Transaction
-    public static void yearToDate(){
+    public static void yearToDate() {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -725,7 +714,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
+            while ((transaction = bankReader.readLine()) != null) {
 
                 //* Placing the info into a list
                 String[] transactionInfo = transaction.split("\\|");
@@ -776,7 +765,7 @@ public class AccountLedgerApp {
                 if (LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -797,7 +786,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that shows previous year Transaction
-    public static void previousYear(){
+    public static void previousYear() {
 
         ArrayList<Transaction> transactionsList = new ArrayList<>();
 
@@ -809,8 +798,7 @@ public class AccountLedgerApp {
 
             //?Loop to go over all the transaction
             String transaction;
-            while ((transaction = bankReader.readLine()) != null){
-
+            while ((transaction = bankReader.readLine()) != null) {
 
 
                 //* Placing the info into a list
@@ -865,7 +853,7 @@ public class AccountLedgerApp {
                 if (demo.getDate().getYear() == lastYear.getYear()) {
 
                     //*Display transaction info
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -886,7 +874,7 @@ public class AccountLedgerApp {
     }
 
     //!Creating a method that can search by vendor
-    public static void searchByVendor(Scanner scanner){
+    public static void searchByVendor(Scanner scanner) {
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
 
@@ -925,7 +913,6 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
 
-
             }
             //* Title
             System.out.println(
@@ -956,7 +943,7 @@ public class AccountLedgerApp {
 
                 if (vendorName.contains(demo.getVendor())) {
                     //*Display transaction info
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -970,14 +957,13 @@ public class AccountLedgerApp {
                 }
             }
             bankReader.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
         }
     }
 
     //!Creating a method that can filter search
-    public static void customSearch(Scanner scanner){
+    public static void customSearch(Scanner scanner) {
 
         //?Creating my list to track my transactions
         ArrayList<Transaction> transactionsList = new ArrayList<>();
@@ -1018,11 +1004,11 @@ public class AccountLedgerApp {
                             + Colors.RESET
             );
 
-                //*Catching the answer
-                String start = scanner.nextLine().trim();
+            //*Catching the answer
+            String start = scanner.nextLine().trim();
 
-                //*parsing the date if they enter a date
-                LocalDate startDate = start.isEmpty() ? null : LocalDate.parse(start);
+            //*parsing the date if they enter a date
+            LocalDate startDate = start.isEmpty() ? null : LocalDate.parse(start);
 
             //*Asking for a end date
             System.out.println(
@@ -1110,64 +1096,54 @@ public class AccountLedgerApp {
             for (Transaction demo : transactionsList) {
 
                 //? if statements to print out filter choice
-                if ( startDate == null) {
+                if (startDate == null) {
 
                 }
-                else if  (demo.getDate().isAfter(startDate) && demo.getDate().isBefore(endDate)) {
+                else if (demo.getDate().isAfter(startDate) && demo.getDate().isBefore(endDate)) {
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
                             : Colors.RED + demo.getType() + Colors.RESET;
 
-                    if (type.equalsIgnoreCase("null")) {
 
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
-                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                                demo.getDescription(), demo.getAmount());
-                    }
-                    else if (demo.getType().equalsIgnoreCase(type)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
-
-                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                                demo.getDescription(), demo.getAmount());
-                    }
-                    if (vendor.equalsIgnoreCase("null")) {
-
-                    }
-                    else if (demo.getVendor().equalsIgnoreCase(vendor)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
-
+                    if (demo.getType().equalsIgnoreCase(type)) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                                 demo.getDescription(), demo.getAmount());
 
-                    }
-                    if (description.equalsIgnoreCase("null")) {
+                        if (demo.getVendor().equalsIgnoreCase(vendor)) {
+                            System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
-                    }
-                    else if (demo.getDescription().equalsIgnoreCase(description)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
 
-                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                                demo.getDescription(), demo.getAmount());
-                    }
-                    if(amount == 0){
+                            System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                                    demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                                    demo.getDescription(), demo.getAmount());
+                        }
 
-                    }
-                    else  if (demo.getAmount() == amount){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                         if (demo.getDescription().equalsIgnoreCase(description)) {
+                            System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
-                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                                demo.getDescription(), demo.getAmount());
+                            System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                                    demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                                    demo.getDescription(), demo.getAmount());
+
+                        }
+                            if (demo.getAmount() == amount) {
+                            System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                            System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                                    demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                                    demo.getDescription(), demo.getAmount());
+                            }
+
                     }
 
                 }
+
+
                 if (endDate == null) {
 
                 }
@@ -1175,8 +1151,7 @@ public class AccountLedgerApp {
 
                 if (type.equalsIgnoreCase("null")) {
 
-                }
-                else if (demo.getType().equalsIgnoreCase(type)){
+                } else if (demo.getType().equalsIgnoreCase(type)) {
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1186,9 +1161,8 @@ public class AccountLedgerApp {
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                                 demo.getDescription(), demo.getAmount());
-                    }
-                    else if (demo.getVendor().equalsIgnoreCase(vendor)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    } else if (demo.getVendor().equalsIgnoreCase(vendor)) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
@@ -1197,20 +1171,18 @@ public class AccountLedgerApp {
                     }
                     if (description.equalsIgnoreCase("null")) {
 
-                    }
-                    else if (demo.getDescription().equalsIgnoreCase(description)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    } else if (demo.getDescription().equalsIgnoreCase(description)) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
 
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                                 demo.getDescription(), demo.getAmount());
                     }
-                    if(amount == 0){
+                    if (amount == 0) {
 
-                    }
-                    else  if (demo.getAmount() == amount){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                    } else if (demo.getAmount() == amount) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
@@ -1218,13 +1190,11 @@ public class AccountLedgerApp {
                     }
 
                 }
-
 
                 if (vendor.equalsIgnoreCase("null")) {
 
-                }
-                else if (demo.getVendor().equalsIgnoreCase(vendor)){
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                } else if (demo.getVendor().equalsIgnoreCase(vendor)) {
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -1237,9 +1207,19 @@ public class AccountLedgerApp {
 
                     if (description.equalsIgnoreCase("null")) {
 
+                    } else if (demo.getDescription().equalsIgnoreCase(description)) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                                demo.getDescription(), demo.getAmount());
                     }
-                    else if (demo.getDescription().equalsIgnoreCase(description)){
-                        System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+
+                    if (amount == 0) {
+
+                    } else if (demo.getAmount() == amount) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
 
                         System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                                 demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
@@ -1251,9 +1231,8 @@ public class AccountLedgerApp {
 
                 if (description.equalsIgnoreCase("null")) {
 
-                }
-                else if (demo.getDescription().equalsIgnoreCase(description)){
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                } else if (demo.getDescription().equalsIgnoreCase(description)) {
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -1263,14 +1242,25 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
+                    if (amount == 0) {
+
+                    } else if (demo.getAmount() == amount) {
+                        System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                        //*Changing the color for type depending on what kinda it is
+
+                        System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                                demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                                demo.getDescription(), demo.getAmount());
+                    }
+
                 }
 
 
-                if(amount == 0){
+                if (amount == 0) {
 
-                }
-                else  if (demo.getAmount() == amount){
-                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+                } else if (demo.getAmount() == amount) {
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
                     //*Changing the color for type depending on what kinda it is
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
@@ -1285,16 +1275,13 @@ public class AccountLedgerApp {
             }
 
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Error" + e.getMessage());
 
         }
 
     }
-
-
 
 
 }
