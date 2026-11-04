@@ -746,15 +746,45 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+            //* Title
+            System.out.println(
+                    Colors.BLUE +
+                            "\n📈══════════════════════ YEAR TO DATE REPORT ═══════════════════════════════════════════📈\n"
+                            + Colors.RESET
+            );
+
+            System.out.printf(
+                    Colors.BOLD +
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
+                    "Date",
+                    "Time",
+                    "Type",
+                    "Vendor",
+                    "Description",
+                    "Amount"
+            );
+
+            System.out.println(
+                    Colors.BLUE +
+                            "📈══════════════════════════════════════════════════════════════════════════════════════📈"
+                            + Colors.RESET
+            );
+
             //?To print out the sorted lists
             for (Transaction demo : transactionsList) {
                 //*If statement  to only print out equal statement
                 if (LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
-                    System.out.println("Transaction");
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+
+                    //*Changing the color for type depending on what kinda it is
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
 
                 }
@@ -803,6 +833,30 @@ public class AccountLedgerApp {
 
 
             }
+            //* Title
+            System.out.println(
+                    Colors.BLUE +
+                            "\n📆══════════════════════ PREVIOUS YEAR REPORT ══════════════════════════════════════════📆\n"
+                            + Colors.RESET
+            );
+
+            System.out.printf(
+                    Colors.BOLD +
+                            "%-12s %-8s %-10s %-20s %-25s %10s\n",
+                    "Date",
+                    "Time",
+                    "Type",
+                    "Vendor",
+                    "Description",
+                    "Amount"
+            );
+
+            System.out.println(
+                    Colors.BLUE +
+                            "📆══════════════════════════════════════════════════════════════════════════════════════📆"
+                            + Colors.RESET
+            );
+
             //?To print out the sorted lists
             for (Transaction demo : transactionsList) {
                 //*Setting up last year placement
@@ -811,9 +865,15 @@ public class AccountLedgerApp {
                 if (demo.getDate().getYear() == lastYear.getYear()) {
 
                     //*Display transaction info
-                    System.out.println("Transaction");
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+
+                    //*Changing the color for type depending on what kinda it is
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
 
                 }
