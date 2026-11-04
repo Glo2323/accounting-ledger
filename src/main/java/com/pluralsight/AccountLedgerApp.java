@@ -47,10 +47,10 @@ public class AccountLedgerApp {
             System.out.println( Colors.PURPLE +
                     "\n🎴═════════════ MAIN MENU ══════════════🎴\n" +
                      Colors.RESET +
-                    "  1️  Add Deposit\n" +
-                    "  2️  Make Payment\n" +
-                    "  3️  View Ledger\n" +
-                    "  4️  Exit\n" +
+                    " 🟢 1️  Add Deposit\n" +
+                    " 🔴 2️  Make Payment\n" +
+                    " 📜 3️  View Ledger\n" +
+                    " 🚪 4 Exit\n" +
 
                     Colors.PURPLE +
                     "🎴══════════════════════════════════════════🎴"
@@ -59,7 +59,7 @@ public class AccountLedgerApp {
 
             System.out.print(
                     Colors.PURPLE +
-                            "\n➡️  Enter your command: "
+                            "\n➡️ Enter your command: "
                             + Colors.RESET
             );
 
@@ -190,19 +190,25 @@ public class AccountLedgerApp {
         boolean menuApp = true;
         while (menuApp) {
 
-            System.out.println("LedgerScreen?\n");
+            System.out.println(
+                    Colors.PURPLE +
+                            "\n📜════════════ LEDGER MENU ════════════📜\n" +
+                            Colors.RESET +
+                            " 📂 1️  All Transactions\n" +
+                            " 🟢 2️  Deposits Only\n" +
+                            " 🔴 3️  Payments Only\n" +
+                            " 📊 4️  Reports\n" +
+                            " 🏠 5️  Home\n" +
+                            Colors.PURPLE +
+                            "📜════════════════════════════════════📜"
+                            + Colors.RESET
+            );
 
-            System.out.println(" 1 - All\n");
-
-            System.out.println(" 2 - Deposit only\n");
-
-            System.out.println(" 3 - Payments only\n");
-
-            System.out.println(" 4 - Reports\n");
-
-            System.out.println(" 5 - Home");
-
-            System.out.println("Enter your command: ");
+            System.out.print(
+                    Colors.PURPLE +
+                            "\n➡️ Enter your command: "
+                            + Colors.RESET
+            );
 
             //*Catch users input
             int command = sC.nextInt();
