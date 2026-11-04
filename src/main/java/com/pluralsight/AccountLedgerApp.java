@@ -45,8 +45,8 @@ public class AccountLedgerApp {
         while (menuApp) {
 
             System.out.println( Colors.PURPLE +
-                    "\n🎴═════════════ MAIN MENU ══════════════🎴\n" +
-                     Colors.RESET +
+                    "\n🎴═════════════ MAIN MENU ═══════════════════🎴\n" +
+                     Colors.RESET + Colors.BOLD +
                     " 🟢 1️  Add Deposit\n" +
                     " 🔴 2️  Make Payment\n" +
                     " 📜 3️  View Ledger\n" +
@@ -193,7 +193,7 @@ public class AccountLedgerApp {
             System.out.println(
                     Colors.PURPLE +
                             "\n📜════════════ LEDGER MENU ════════════📜\n" +
-                            Colors.RESET +
+                            Colors.RESET + Colors.BOLD +
                             " 📂 1️  All Transactions\n" +
                             " 🟢 2️  Deposits Only\n" +
                             " 🔴 3️  Payments Only\n" +
@@ -469,7 +469,7 @@ public class AccountLedgerApp {
                             ? Colors.GREEN + demo.getType() + Colors.RESET
                             : Colors.RED + demo.getType() + Colors.RESET;
 
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
                 }
@@ -491,23 +491,27 @@ public class AccountLedgerApp {
         boolean menuApp = true;
         while (menuApp) {
 
-            System.out.println("ReportsScreen\n");
+            System.out.println(
+                    Colors.PURPLE +
+                            "\n📊════════════ REPORTS MENU ════════════📊\n" +
+                            Colors.RESET + Colors.BOLD +
+                            " 🗓️ 1️  Month To Date\n" +
+                            " 📅 2️  Previous Month\n" +
+                            " 🗓️ 3️  Year To Date\n" +
+                            " 📅 4️  Previous Year\n" +
+                            " 🏪 5️  Search By Vendor\n" +
+                            " 🔍 6️  Custom Search\n" +
+                            " 🏠 0️  Back\n" +
+                            Colors.PURPLE +
+                            "📊════════════════════════════════════📊"
+                            + Colors.RESET
+            );
 
-            System.out.println(" 1 - Month to date\n");
-
-            System.out.println(" 2 - Previous Month\n");
-
-            System.out.println(" 3 - Year to Date\n");
-
-            System.out.println(" 4 - Previous Year\n");
-
-            System.out.println(" 5 - Search by Vendor\n");
-
-            System.out.println(" 6 - Custom Search\n");
-
-            System.out.println(" 0 - Back");
-
-            System.out.println("Enter your command: ");
+            System.out.print(
+                    Colors.PURPLE +
+                            "\n➡️ Enter your command: "
+                            + Colors.RESET
+            );
 
             //*Catch users input
             int command = sC.nextInt();
@@ -566,6 +570,30 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+            //* Title
+            System.out.println(
+                    Colors.GREEN +
+                            "\n💰══════════════════════ MONTH TO DATE REPORT ══════════════════════════════════════════💰\n"
+                            + Colors.RESET
+            );
+
+            System.out.printf(
+                    "%-12s %-8s %-10s %-20s %-25s %10s\n",
+                    "Date",
+                    "Time",
+                    "Type",
+                    "Vendor",
+                    "Description",
+                    "Amount"
+            );
+
+            System.out.println(
+                    Colors.GREEN +
+                            "💰══════════════════════════════════════════════════════════════════════════════════════💰"
+                            + Colors.RESET
+            );
+
+
             //?To print out the sorted lists
             for (Transaction demo : transactionsList) {
                 //*If statement  to only print out equal statement
@@ -573,9 +601,15 @@ public class AccountLedgerApp {
                         LocalDate.now().getYear() == demo.getDate().getYear()) {
 
                     //*Display transaction info
-                    System.out.println("Transaction");
-                    System.out.printf("%s | %s | %s | %s | %s | %.2f |\n\n",
-                            demo.getDate(), demo.getTime(), demo.getType(), demo.getVendor(),
+                    System.out.println(Colors.CYAN + "Transaction" +  Colors.RESET);
+
+                    //*Changing the color for type depending on what kinda it is
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
 
                 }
