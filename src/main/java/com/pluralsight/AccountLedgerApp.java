@@ -19,20 +19,25 @@ public class AccountLedgerApp {
 
     public static void main(String[] args) {
 
+        try {
 
-        System.out.println(
-                Colors.BLUE +
-                        "📜════════════ ACCOUNT LEDGER ════════════📜\n" +
-                        "      AVATAR FIGURES & COLLECTIBLES\n" +
-                        "📜════════════════════════════════════════📜"
-                        + Colors.RESET
-        );
-        //?Creating my scanner
-        Scanner input = new Scanner(System.in);
 
-        //?Calling the Menu
-        displayHomeMenu(input);
+            System.out.println(
+                    Colors.BLUE +
+                            "📜════════════ ACCOUNT LEDGER ════════════📜\n" +
+                            "      AVATAR FIGURES & COLLECTIBLES\n" +
+                            "📜════════════════════════════════════════📜\n"
+                            + Colors.RESET
+            );
+            //?Creating my scanner
+            Scanner input = new Scanner(System.in);
 
+            //?Calling the Menu
+            displayHomeMenu(input);
+        } catch (Exception e) {
+
+            System.out.println("error " + e.getMessage());
+        }
 
     }
 
@@ -43,41 +48,61 @@ public class AccountLedgerApp {
         //?Loop for the menu
         boolean menuApp = true;
         while (menuApp) {
+                try {
 
-            System.out.println(Colors.PURPLE +
-                    "\n🎴═════════════ MAIN MENU ═══════════════════🎴\n" +
-                    Colors.RESET + Colors.BOLD +
-                    " 🟢 1️  Add Deposit\n" +
-                    " 🔴 2️  Make Payment\n" +
-                    " 📜 3️  View Ledger\n" +
-                    " 🚪 4 Exit\n" +
+                    Thread.sleep(1000);
 
-                    Colors.PURPLE +
-                    "🎴══════════════════════════════════════════🎴"
-                    + Colors.RESET
-            );
-
-            System.out.print(
-                    Colors.PURPLE +
-                            "\n➡️ Enter your command: "
+                    System.out.println(Colors.PURPLE +
+                            "\n🎴═════════════ MAIN MENU ═══════════════════🎴4" +
+                            "" +
+                            Colors.RESET
+                    );
+                    Thread.sleep(1000);
+                    System.out.println(Colors.BOLD +
+                            " 🟢 1️  Add Deposit" );
+                    Thread.sleep(1000);
+                    System.out.println(Colors.BOLD +
+                            " 🔴 2️  Make Payment" + Colors.RESET);
+                    Thread.sleep(1000);
+                    System.out.println(Colors.BOLD +
+                            " 📜 3️  View Ledger" + Colors.RESET);
+                    Thread.sleep(1000);
+                    System.out.println(Colors.BOLD +
+                            " 🚪 4 Exit"
                             + Colors.RESET
-            );
+                    );
+                    Thread.sleep(1000);
+                    System.out.println(
+                            Colors.PURPLE +
+                            "🎴══════════════════════════════════════════🎴"
+                            + Colors.RESET
+                    );
+                    Thread.sleep(1000);
+                    System.out.print(
+                            Colors.PURPLE +
+                                    "\n➡️ Enter your command: "
+                                    + Colors.RESET
+                    );
 
-            //*Catch users input
-            int command = sC.nextInt();
+                    //*Catch users input
+                    int command = sC.nextInt();
 
-            //*Catch next line
-            sC.nextLine();
+                    //*Catch next line
+                    sC.nextLine();
 
-            //*Navigating through the menu
-            switch (command) {
-                case 1 -> addDeposit(sC);
-                case 2 -> makePayment(sC);
-                case 3 -> displayLedgerScreen(sC);
-                case 4 -> menuApp = false;
+                    //*Navigating through the menu
+                    switch (command) {
+                        case 1 -> addDeposit(sC);
+                        case 2 -> makePayment(sC);
+                        case 3 -> displayLedgerScreen(sC);
+                        case 4 -> menuApp = false;
 
 
-            }
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error " + e.getMessage());
+                }
 
         }
 
@@ -183,44 +208,65 @@ public class AccountLedgerApp {
         //?Loop for the menu
         boolean menuApp = true;
         while (menuApp) {
+            try {
 
-            System.out.println(
-                    Colors.PURPLE +
-                            "\n📜════════════ LEDGER MENU ════════════📜\n" +
-                            Colors.RESET + Colors.BOLD +
-                            " 📂 1️  All Transactions\n" +
-                            " 🟢 2️  Deposits Only\n" +
-                            " 🔴 3️  Payments Only\n" +
-                            " 📊 4️  Reports\n" +
-                            " 🏠 5️  Home\n" +
-                            Colors.PURPLE +
-                            "📜════════════════════════════════════📜"
-                            + Colors.RESET
-            );
+                Thread.sleep(1000);
+                System.out.println(
+                        Colors.PURPLE +
+                                "\n📜════════════ LEDGER MENU ════════════📜" +
+                                Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(Colors.BOLD +
+                        " 📂 1️  All Transactions"  + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(Colors.BOLD +
+                        " 🟢 2️  Deposits Only"  + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(Colors.BOLD +
+                        " 🔴 3️  Payments Only"  + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(Colors.BOLD +
+                                " 📊 4️  Reports"  + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(Colors.BOLD +
+                                " 🏠 5️  Home"  + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.println(  Colors.PURPLE +
+                        "📜════════════════════════════════════📜"
+                        + Colors.RESET
+                );
+                Thread.sleep(1000);
+                System.out.print(
+                        Colors.PURPLE +
+                                "\n➡️ Enter your command: "
+                                + Colors.RESET
+                );
 
-            System.out.print(
-                    Colors.PURPLE +
-                            "\n➡️ Enter your command: "
-                            + Colors.RESET
-            );
+                //*Catch users input
+                int command = sC.nextInt();
 
-            //*Catch users input
-            int command = sC.nextInt();
+                //*Catch next line
+                sC.nextLine();
 
-            //*Catch next line
-            sC.nextLine();
-
-            //*Navigating through the menu
-            switch (command) {
-                case 1 -> allTransactions();
-                case 2 -> onlyDeposits();
-                case 3 -> onlyPayments();
-                case 4 -> displayReportsMenu(sC);
-                case 5 -> menuApp = false;
+                //*Navigating through the menu
+                switch (command) {
+                    case 1 -> allTransactions();
+                    case 2 -> onlyDeposits();
+                    case 3 -> onlyPayments();
+                    case 4 -> displayReportsMenu(sC);
+                    case 5 -> menuApp = false;
 
 
+                }
+            } catch (Exception e) {
+                System.out.println("Error " + e.getMessage());
             }
-
         }
 
 
