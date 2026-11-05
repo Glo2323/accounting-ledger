@@ -5,15 +5,10 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.*;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import static java.util.Collections.copy;
-import static java.util.Collections.sort;
 
 public class AccountLedgerApp {
 
@@ -50,34 +45,34 @@ public class AccountLedgerApp {
         while (menuApp) {
                 try {
 
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
 
                     System.out.println(Colors.PURPLE +
                             "\n🎴═════════════ MAIN MENU ═══════════════════🎴4" +
                             "" +
                             Colors.RESET
                     );
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.println(Colors.BOLD +
                             " 🟢 1️  Add Deposit" );
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.println(Colors.BOLD +
                             " 🔴 2️  Make Payment" + Colors.RESET);
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.println(Colors.BOLD +
                             " 📜 3️  View Ledger" + Colors.RESET);
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.println(Colors.BOLD +
                             " 🚪 4 Exit"
                             + Colors.RESET
                     );
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.println(
                             Colors.PURPLE +
                             "🎴══════════════════════════════════════════🎴"
                             + Colors.RESET
                     );
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     System.out.print(
                             Colors.PURPLE +
                                     "\n➡️ Enter your command: "
@@ -210,38 +205,38 @@ public class AccountLedgerApp {
         while (menuApp) {
             try {
 
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(
                         Colors.PURPLE +
                                 "\n📜════════════ LEDGER MENU ════════════📜" +
                                 Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(Colors.BOLD +
                         " 📂 1️  All Transactions"  + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(Colors.BOLD +
                         " 🟢 2️  Deposits Only"  + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(Colors.BOLD +
                         " 🔴 3️  Payments Only"  + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                                " 📊 4️  Reports"  + Colors.RESET
+                        " 📊 4️  Reports"  + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                                " 🏠 5️  Home"  + Colors.RESET
+                        " 🏠 5️  Home"  + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println(  Colors.PURPLE +
                         "📜════════════════════════════════════📜"
                         + Colors.RESET
                 );
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.print(
                         Colors.PURPLE +
                                 "\n➡️ Enter your command: "
@@ -307,13 +302,14 @@ public class AccountLedgerApp {
 
 
             }
+            Thread.sleep(500);
             //*Title
             System.out.println(
                     Colors.CYAN +
                             "\n📜══════════════════════════════ All TRANSACTIONS LEDGER ═══════════════════════════════📜\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
@@ -323,7 +319,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount" + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.CYAN +
                             "📜══════════════════════════════════════════════════════════════════════════════════════📜"
@@ -387,13 +383,14 @@ public class AccountLedgerApp {
 
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.GREEN +
                             "\n🛍️══════════════════ AVATAR FIGURES & COLLECTIBLES DEPOSITS ════════════════════════════🛍️\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
@@ -403,7 +400,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount" + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.GREEN +
                             "🛍️══════════════════════════════════════════════════════════════════════════════════════🛍️"
@@ -471,13 +468,14 @@ public class AccountLedgerApp {
 
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.RED +
                             "\n💳════════════════════════ PAYMENTS LEDGER ═════════════════════════════════════════════💳\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(
                     "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
@@ -487,7 +485,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount"
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.RED +
                             "💳══════════════════════════════════════════════════════════════════════════════════════💳"
@@ -526,48 +524,76 @@ public class AccountLedgerApp {
         //?Loop for the menu
         boolean menuApp = true;
         while (menuApp) {
+            try {
 
-            System.out.println(
-                    Colors.PURPLE +
-                            "\n📊════════════ REPORTS MENU ════════════📊\n" +
-                            Colors.RESET + Colors.BOLD +
-                            " 🗓️ 1️  Month To Date\n" +
-                            " 📅 2️  Previous Month\n" +
-                            " 🗓️ 3️  Year To Date\n" +
-                            " 📅 4️  Previous Year\n" +
-                            " 🏪 5️  Search By Vendor\n" +
-                            " 🔍 6️  Custom Search\n" +
-                            " 🏠 0️  Back\n" +
-                            Colors.PURPLE +
-                            "📊════════════════════════════════════📊"
-                            + Colors.RESET
-            );
+                Thread.sleep(500);
+                System.out.println(
+                        Colors.PURPLE +
+                                "\n📊════════════ REPORTS MENU ════════════📊" +
+                                Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🗓️ 1️  Month To Date" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 📅 2️  Previous Month" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🗓️ 3️  Year To Date" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 📅 4️  Previous Year" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🏪 5️  Search By Vendor" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🔍 6️  Custom Search" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🏠 0️  Back" + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(
+                        Colors.PURPLE +
+                                "📊════════════════════════════════════📊"
+                                + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.print(
+                        Colors.PURPLE +
+                                "\n➡️ Enter your command: "
+                                + Colors.RESET
+                );
 
-            System.out.print(
-                    Colors.PURPLE +
-                            "\n➡️ Enter your command: "
-                            + Colors.RESET
-            );
+                //*Catch users input
+                int command = sC.nextInt();
 
-            //*Catch users input
-            int command = sC.nextInt();
+                //*Catch next line
+                sC.nextLine();
 
-            //*Catch next line
-            sC.nextLine();
-
-            //*Navigating through the menu
-            switch (command) {
-                case 0 -> menuApp = false;
-                case 1 -> monthToDate();
-                case 2 -> previousMonth();
-                case 3 -> yearToDate();
-                case 4 -> previousYear();
-                case 5 -> searchByVendor(sC);
-                case 6 -> customSearch(sC);
+                //*Navigating through the menu
+                switch (command) {
+                    case 0 -> menuApp = false;
+                    case 1 -> monthToDate();
+                    case 2 -> previousMonth();
+                    case 3 -> yearToDate();
+                    case 4 -> previousYear();
+                    case 5 -> searchByVendor(sC);
+                    case 6 -> customSearch(sC);
 
 
+                }
+            } catch (Exception e) {
+                System.out.println("Error " + e.getMessage());
             }
-
         }
 
     }
@@ -606,13 +632,14 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n💰══════════════════════ MONTH TO DATE REPORT ══════════════════════════════════════════💰\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
@@ -622,7 +649,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount" + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "💰══════════════════════════════════════════════════════════════════════════════════════💰"
@@ -693,13 +720,14 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n📅══════════════════════ PREVIOUS MONTH REPORT ═════════════════════════════════════════📅\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
                     "Date",
@@ -709,7 +737,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount" + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "📅══════════════════════════════════════════════════════════════════════════════════════📅"
@@ -781,13 +809,14 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n📈══════════════════════ YEAR TO DATE REPORT ═══════════════════════════════════════════📈\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(
                     Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
@@ -798,7 +827,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount"
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "📈══════════════════════════════════════════════════════════════════════════════════════📈"
@@ -867,13 +896,14 @@ public class AccountLedgerApp {
 
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n📆══════════════════════ PREVIOUS YEAR REPORT ══════════════════════════════════════════📆\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(
                     Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
@@ -884,7 +914,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount"
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "📆══════════════════════════════════════════════════════════════════════════════════════📆"
@@ -929,6 +959,7 @@ public class AccountLedgerApp {
             BufferedReader bankReader = new BufferedReader(new FileReader("transaction.csv"));
 
             //*Asking question
+            Thread.sleep(500);
             System.out.print(
                     Colors.PURPLE +
                             "\n🔍 Enter Vendor Name: "
@@ -960,13 +991,14 @@ public class AccountLedgerApp {
 
 
             }
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n🏪══════════════════════ SEARCH BY VENDOR REPORT ═══════════════════════════════════════🏪\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(
                     Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
@@ -977,7 +1009,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount"
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "🏪══════════════════════════════════════════════════════════════════════════════════════🏪"
@@ -1041,6 +1073,7 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
+
             //*Prompting the user for questions to create the filter
             //*Asking for a start date
             System.out.println(
@@ -1113,14 +1146,14 @@ public class AccountLedgerApp {
 
             //*Catching the answer
             double amount = scanner.nextDouble();
-
+            Thread.sleep(500);
             //* Title
             System.out.println(
                     Colors.BLUE +
                             "\n🔍══════════════════════ CUSTOM SEARCH REPORT ════════════════════════════════════════🔍\n"
                             + Colors.RESET
             );
-
+            Thread.sleep(500);
             System.out.printf(
                     Colors.BOLD +
                             "%-12s %-8s %-10s %-20s %-25s %10s\n",
@@ -1131,7 +1164,7 @@ public class AccountLedgerApp {
                     "Description",
                     "Amount"
             );
-
+            Thread.sleep(500);
             System.out.println(
                     Colors.BLUE +
                             "🔍══════════════════════════════════════════════════════════════════════════════════════🔍"
