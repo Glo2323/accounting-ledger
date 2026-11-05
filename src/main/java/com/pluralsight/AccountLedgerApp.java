@@ -995,10 +995,6 @@ public class AccountLedgerApp {
                         .thenComparing(Transaction::getDescription).reversed());
 
             }
-            //*Placeholder date
-            LocalDate date = LocalDate.MIN;
-
-
             //*Prompting the user for questions to create the filter
             //*Asking for a start date
             System.out.println(
@@ -1012,7 +1008,7 @@ public class AccountLedgerApp {
             String start = scanner.nextLine().trim();
 
             //*parsing the date if they enter a date
-            LocalDate startDate = start.isEmpty() ? null  : LocalDate.parse(start);
+            LocalDate startDate = start.isEmpty() ? null : LocalDate.parse(start);
 
             //*Asking for a end date
             System.out.println(
@@ -1099,9 +1095,9 @@ public class AccountLedgerApp {
             //?Loop going through my transactions filtering out
             for (Transaction demo : transactionsList) {
 
-
+                //?Setting up the filters
                 boolean afterStart = startDate != null && demo.getDate().isAfter(startDate);
-                boolean beforeEnd = endDate != null &&demo.getDate().isBefore(endDate);
+                boolean beforeEnd = endDate != null && demo.getDate().isBefore(endDate);
                 boolean dateMatch = afterStart && beforeEnd;
                 boolean typeMatch = demo.getType().equalsIgnoreCase(type);
                 boolean vendorMatch = demo.getVendor().equalsIgnoreCase(vendor);
@@ -1119,29 +1115,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-                else if (dateMatch && typeMatch && vendorMatch && descriptionMatch) {
-
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                        ? Colors.GREEN + demo.getType() + Colors.RESET
-                        : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-                else if (dateMatch && typeMatch && vendorMatch ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                            ? Colors.GREEN + demo.getType() + Colors.RESET
-                            : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-                else if (dateMatch && typeMatch  ) {
+                } else if (dateMatch && typeMatch && vendorMatch && descriptionMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1151,9 +1125,16 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
+                } else if (dateMatch && typeMatch && vendorMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
-                else if (dateMatch && vendorMatch ) {
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (dateMatch && typeMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1163,8 +1144,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-                else if (dateMatch && descriptionMatch ) {
+                } else if (dateMatch && vendorMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1174,8 +1154,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-                else if (dateMatch && amountMatch ) {
+                } else if (dateMatch && descriptionMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1185,9 +1164,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-
-                else if (typeMatch && vendorMatch && descriptionMatch && amountMatch ) {
+                } else if (dateMatch && amountMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1197,9 +1174,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-
-                else if (typeMatch && vendorMatch && descriptionMatch ) {
+                } else if (typeMatch && vendorMatch && descriptionMatch && amountMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1209,29 +1184,7 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
-                else if (typeMatch && vendorMatch  ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                        ? Colors.GREEN + demo.getType() + Colors.RESET
-                        : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-                else if (typeMatch && descriptionMatch ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                            ? Colors.GREEN + demo.getType() + Colors.RESET
-                            : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-
-                else if (typeMatch && amountMatch ) {
+                } else if (typeMatch && vendorMatch && descriptionMatch) {
 
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
@@ -1241,9 +1194,62 @@ public class AccountLedgerApp {
                     System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
-                }
+                } else if (typeMatch && vendorMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
-                else if (vendorMatch && descriptionMatch && amountMatch) {
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (typeMatch && descriptionMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (typeMatch && amountMatch) {
+
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (vendorMatch && descriptionMatch && amountMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (vendorMatch && descriptionMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (vendorMatch && amountMatch) {
+                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
+                            ? Colors.GREEN + demo.getType() + Colors.RESET
+                            : Colors.RED + demo.getType() + Colors.RESET;
+                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
+
+                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
+                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
+                            demo.getDescription(), demo.getAmount());
+                } else if (descriptionMatch && amountMatch) {
                     String coloredType = demo.getType().equalsIgnoreCase("Deposit")
                             ? Colors.GREEN + demo.getType() + Colors.RESET
                             : Colors.RED + demo.getType() + Colors.RESET;
@@ -1253,41 +1259,6 @@ public class AccountLedgerApp {
                             demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
                             demo.getDescription(), demo.getAmount());
                 }
-                else if ( vendorMatch && descriptionMatch ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                            ? Colors.GREEN + demo.getType() + Colors.RESET
-                            : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-                else if (vendorMatch && amountMatch ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                            ? Colors.GREEN + demo.getType() + Colors.RESET
-                            : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-
-                else if (descriptionMatch && amountMatch ) {
-                    String coloredType = demo.getType().equalsIgnoreCase("Deposit")
-                            ? Colors.GREEN + demo.getType() + Colors.RESET
-                            : Colors.RED + demo.getType() + Colors.RESET;
-                    System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
-
-                    System.out.printf("%-12s|%-8s|%-10s|%-20s|%-25s|%-10.2f\n\n",
-                            demo.getDate(), demo.getTime(), coloredType, demo.getVendor(),
-                            demo.getDescription(), demo.getAmount());
-                }
-
-
-
-
 
 
             }
