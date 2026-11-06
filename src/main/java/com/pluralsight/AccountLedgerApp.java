@@ -15,8 +15,18 @@ public class AccountLedgerApp {
     public static void main(String[] args) {
 
         try {
+            Thread.sleep(1000);
+            System.out.print("Initialize");
+            Thread.sleep(1000);
+            System.out.print(".");
+            Thread.sleep(1000);
+            System.out.print(".");
+            Thread.sleep(1000);
+            System.out.print(".");
+            Thread.sleep(1000);
+            System.out.println(".\n");
 
-
+            Thread.sleep(750);
             System.out.println(
                     Colors.BLUE +
                             "📜════════════ ACCOUNT LEDGER ════════════📜\n" +
@@ -117,14 +127,8 @@ public class AccountLedgerApp {
             //*Creating buffer writer to write their deposit in the file
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
-            //*Asking for how much there deposit
-            System.out.println("How much would you like to deposit $");
-
-            //*Catching there answer
-            String deposit = sC.nextLine();
-
             //*Asking for a vendor
-            System.out.println("Vendor: ");
+            System.out.println("Enter Username: ");
 
             //*Catching the answer
             String vendor = sC.nextLine();
@@ -135,6 +139,11 @@ public class AccountLedgerApp {
             //*Catching the answer
             String description = sC.nextLine();
 
+            //*Asking for how much there deposit
+            System.out.println("Price of item: ");
+
+            //*Catching there answer
+            String deposit = sC.nextLine();
 
             //*Formatting there deposit into the file
             String writtenLine = String.format("%s|%.5s|Deposit|%s|%s|%s\n", date, time, vendor, description, deposit);
@@ -165,7 +174,7 @@ public class AccountLedgerApp {
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for how much there deposit
-            System.out.println("How much would you like to Pay  $");
+            System.out.println("Payment Price: ");
 
             //*Catching there answer
             String deposit = sC.nextLine();
