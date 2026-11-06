@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -1028,7 +1029,7 @@ public class AccountLedgerApp {
             //?Creating a loop to display the transactions in order
             for (Transaction demo : transactionsList) {
 
-                if (vendorName.contains(demo.getVendor())) {
+                if (demo.getVendor().toLowerCase().contains(vendorName.toLowerCase())) {
                     //*Display transaction info
                     System.out.println(Colors.CYAN + "Transaction" + Colors.RESET);
 
