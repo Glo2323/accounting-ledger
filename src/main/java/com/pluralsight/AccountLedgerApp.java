@@ -139,19 +139,19 @@ public class AccountLedgerApp {
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for a vendor
-            System.out.println("Enter Username: \n");
+            System.out.println("\nEnter Username: ");
 
             //*Catching the answer
             String vendor = sC.nextLine();
 
             //*Asking for a description
-            System.out.println("Small description: \n");
+            System.out.println("\nSmall description: ");
 
             //*Catching the answer
             String description = sC.nextLine();
 
             //*Asking for how much there deposit
-            System.out.println("Price of item: \n");
+            System.out.println("\nPrice of item: ");
 
             //*Catching there answer
             String deposit = sC.nextLine();
@@ -185,19 +185,19 @@ public class AccountLedgerApp {
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for how much there deposit
-            System.out.println("Payment Price: \n");
+            System.out.println("\nPayment Price: ");
 
             //*Catching there answer
             String deposit = sC.nextLine();
 
             //*Asking for a vendor
-            System.out.println("Vendor: \n");
+            System.out.println("\nVendor: ");
 
             //*Catching the answer
             String vendor = sC.nextLine();
 
             //*Asking for a description
-            System.out.println("Small description: \n");
+            System.out.println("\nSmall description: ");
 
             //*Catching the answer
             String description = sC.nextLine();
