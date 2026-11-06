@@ -53,61 +53,61 @@ public class AccountLedgerApp {
         //?Loop for the menu
         boolean menuApp = true;
         while (menuApp) {
-                try {
+            try {
 
-                    Thread.sleep(500);
+                Thread.sleep(500);
 
-                    System.out.println(Colors.PURPLE +
-                            "\n🎴═════════════ MAIN MENU ═══════════════════🎴4" +
-                            "" +
-                            Colors.RESET
-                    );
-                    Thread.sleep(500);
-                    System.out.println(Colors.BOLD +
-                            " 🟢 1️  Add Deposit" );
-                    Thread.sleep(500);
-                    System.out.println(Colors.BOLD +
-                            " 🔴 2️  Make Payment" + Colors.RESET);
-                    Thread.sleep(500);
-                    System.out.println(Colors.BOLD +
-                            " 📜 3️  View Ledger" + Colors.RESET);
-                    Thread.sleep(500);
-                    System.out.println(Colors.BOLD +
-                            " 🚪 4 Exit"
-                            + Colors.RESET
-                    );
-                    Thread.sleep(500);
-                    System.out.println(
-                            Colors.PURPLE +
-                            "🎴══════════════════════════════════════════🎴"
-                            + Colors.RESET
-                    );
-                    Thread.sleep(500);
-                    System.out.print(
-                            Colors.PURPLE +
-                                    "\n➡️ Enter your command: "
-                                    + Colors.RESET
-                    );
+                System.out.println(Colors.PURPLE +
+                        "\n🎴═════════════ MAIN MENU ═══════════════════🎴4" +
 
-                    //*Catch users input
-                    int command = sC.nextInt();
+                        Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🟢 1️  Add Deposit");
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🔴 2️  Make Payment" + Colors.RESET);
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 📜 3️  View Ledger" + Colors.RESET);
+                Thread.sleep(500);
+                System.out.println(Colors.BOLD +
+                        " 🚪 4 Exit"
+                        + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.println(
+                        Colors.PURPLE +
+                                "🎴══════════════════════════════════════════🎴"
+                                + Colors.RESET
+                );
+                Thread.sleep(500);
+                System.out.print(
+                        Colors.PURPLE +
+                                "\n➡️ Enter your command: "
+                                + Colors.RESET
+                );
 
-                    //*Catch next line
-                    sC.nextLine();
+                //*Catch users input
+                int command = sC.nextInt();
 
-                    //*Navigating through the menu
-                    switch (command) {
-                        case 1 -> addDeposit(sC);
-                        case 2 -> makePayment(sC);
-                        case 3 -> displayLedgerScreen(sC);
-                        case 4 -> menuApp = false;
+                //*Catch next line
+                sC.nextLine();
+
+                //*Navigating through the menu
+                switch (command) {
+                    case 1 -> addDeposit(sC);
+                    case 2 -> makePayment(sC);
+                    case 3 -> displayLedgerScreen(sC);
+                    case 4 -> menuApp = false;
 
 
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("Error " + e.getMessage());
                 }
+
+            } catch (Exception e) {
+                System.out.println("Error " + e.getMessage());
+            }
 
         }
 
@@ -128,19 +128,19 @@ public class AccountLedgerApp {
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for a vendor
-            System.out.println("Enter Username: ");
+            System.out.println("Enter Username: \n");
 
             //*Catching the answer
             String vendor = sC.nextLine();
 
             //*Asking for a description
-            System.out.println("Small description: ");
+            System.out.println("Small description: \n");
 
             //*Catching the answer
             String description = sC.nextLine();
 
             //*Asking for how much there deposit
-            System.out.println("Price of item: ");
+            System.out.println("Price of item: \n");
 
             //*Catching there answer
             String deposit = sC.nextLine();
@@ -174,19 +174,19 @@ public class AccountLedgerApp {
             BufferedWriter bankWriter = new BufferedWriter(new FileWriter("transaction.csv", true));
 
             //*Asking for how much there deposit
-            System.out.println("Payment Price: ");
+            System.out.println("Payment Price: \n");
 
             //*Catching there answer
             String deposit = sC.nextLine();
 
             //*Asking for a vendor
-            System.out.println("Vendor: ");
+            System.out.println("Vendor: \n");
 
             //*Catching the answer
             String vendor = sC.nextLine();
 
             //*Asking for a description
-            System.out.println("Small description: ");
+            System.out.println("Small description: \n");
 
             //*Catching the answer
             String description = sC.nextLine();
@@ -222,26 +222,26 @@ public class AccountLedgerApp {
                 );
                 Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                        " 📂 1️  All Transactions"  + Colors.RESET
+                        " 📂 1️  All Transactions" + Colors.RESET
                 );
                 Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                        " 🟢 2️  Deposits Only"  + Colors.RESET
+                        " 🟢 2️  Deposits Only" + Colors.RESET
                 );
                 Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                        " 🔴 3️  Payments Only"  + Colors.RESET
+                        " 🔴 3️  Payments Only" + Colors.RESET
                 );
                 Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                        " 📊 4️  Reports"  + Colors.RESET
+                        " 📊 4️  Reports" + Colors.RESET
                 );
                 Thread.sleep(500);
                 System.out.println(Colors.BOLD +
-                        " 🏠 5️  Home"  + Colors.RESET
+                        " 🏠 5️  Home" + Colors.RESET
                 );
                 Thread.sleep(500);
-                System.out.println(  Colors.PURPLE +
+                System.out.println(Colors.PURPLE +
                         "📜════════════════════════════════════📜"
                         + Colors.RESET
                 );
