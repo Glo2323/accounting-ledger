@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -101,7 +100,18 @@ public class AccountLedgerApp {
                     case 1 -> addDeposit(sC);
                     case 2 -> makePayment(sC);
                     case 3 -> displayLedgerScreen(sC);
-                    case 4 -> menuApp = false;
+                    case 4 -> { Thread.sleep(750);
+                        System.out.println(
+                                Colors.CYAN +
+                                        "\n🌊══════════ CLOSING LEDGER ══════════🌊\n" +
+                                        "      Avatar Figures & Collectibles\n" +
+                                        "         Ledger Closed Successfully\n" +
+                                        "     Balance Protected by the Avatar\n" +
+                                        "🌊══════════════════════════════════🌊" +
+                                        Colors.RESET
+                        );
+                        menuApp = false;
+                    }
 
 
                 }
